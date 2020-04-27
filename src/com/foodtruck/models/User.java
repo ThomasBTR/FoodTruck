@@ -4,6 +4,7 @@ package com.foodtruck.models;
 import java.util.Date;
 
 public class User {
+    private int id;
     private String nom;
     private String prenom;
     private Genre genre;
@@ -14,7 +15,8 @@ public class User {
 
 
 //////////// Constructeur ////////////
-    public User(String nom, String prenom, Date dateDeNaissance, String adresse, String email, String societe) {
+    public User(int id, String nom, String prenom, Date dateDeNaissance, String adresse, String email, String societe) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.dateDeNaissance = dateDeNaissance;
@@ -24,6 +26,15 @@ public class User {
     }
 
     ////// GETTER - SETTER ////////////////
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Genre getGenre() {
         return genre;

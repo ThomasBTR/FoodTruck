@@ -3,6 +3,7 @@ package com.foodtruck.models;
 import java.util.Date;
 
 public class Commande {
+    private int id;
     private int idCommande;
     private Date dateLivraison;
     private TypeRepas typeRepas;
@@ -12,7 +13,8 @@ public class Commande {
 
 ////////// CONSTRUCTEUR ////////////////
 
-    public Commande(int idCommande, Date dateLivraison, TypeRepas typeRepas, FamilleProduits familleProduits, int quantiteProduit, String adresseLivraison) {
+    public Commande(int id, int idCommande, Date dateLivraison, TypeRepas typeRepas, FamilleProduits familleProduits, int quantiteProduit, String adresseLivraison) {
+        this.id = id;
         this.idCommande = idCommande;
         this.dateLivraison = dateLivraison;
         this.typeRepas = typeRepas;
@@ -24,6 +26,14 @@ public class Commande {
 
 //////////GETTER - SETTER ////////////////
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getIdCommande() {
         return idCommande;

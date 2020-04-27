@@ -1,6 +1,6 @@
 package com.foodtruck.models;
 
-public class Produits {
+public class Produit {
     private String nom;
     private String description;
     private String URLImage;
@@ -11,7 +11,7 @@ public class Produits {
 
 //////// CONSTRUCTEUR ///////////////
 
-    public Produits(String nom, String description, String URLImage, double prix, TypeRepas typeRepas, FamilleProduits familleProduits) {
+    public Produit(int id, String nom, String description, String URLImage, double prix, TypeRepas typeRepas, FamilleProduits familleProduits) {
         this.nom = nom;
         this.description = description;
         this.URLImage = URLImage;
