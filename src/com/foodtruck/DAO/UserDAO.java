@@ -43,6 +43,7 @@ public class UserDAO extends DAO<User>{
         catch (SQLException ex){
             System.out.println("Error SQL " + ex.getMessage());
         }
+
         finally {
             return result;
         }

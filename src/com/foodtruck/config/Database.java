@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public class Database {
     private String host = "127.0.0.1"; //localhost
-    private String dbName = "demo_sql_akka";
+    private String dbName = "tpjavafoodtruck";
     private int port = 3306;
     private String URL = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?useSSL=false";
-    private String username = "root";
-    private String password = "training";
+    private String username = "Vincent";
+    private String password = "mutton999";
     private static Connection connection;
 
     // Etape 1
@@ -20,11 +20,16 @@ public class Database {
     private Database(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            System.out.println(URL);
+            System.out.println(username);
+            System.out.println(password);
+
             connection = DriverManager.getConnection(URL, username, password);
-            //connection = DriverManager.getConnection(URL, username, password);
             System.out.println("Connexion faite");
+
         }
         catch (ClassNotFoundException | SQLException ex){
+            System.out.println("Probleme connection");
             System.out.println(ex.getMessage());
         }
     }

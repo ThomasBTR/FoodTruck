@@ -1,7 +1,9 @@
 package com.foodtruck.DAO;
 
 import com.foodtruck.config.Database;
+import com.foodtruck.models.FamilleProduits;
 import com.foodtruck.models.Produit;
+import com.foodtruck.models.TypeRepas;
 import com.foodtruck.models.User;
 
 import java.sql.*;
@@ -9,6 +11,7 @@ import java.util.*;
 
 public class ProduitDAO extends DAO<Produit> {
     private Connection connection;
+
     ArrayList<User> tp = new ArrayList<User>();
 
     public ProduitDAO() {
@@ -40,45 +43,72 @@ public class ProduitDAO extends DAO<Produit> {
         return emp;
     }
 
-    public Produit findByName(String name) {
-        // TODO
-        Produit prod = null;
-//
-//        try {
-//
-//            Statement state = connection.createStatement();
-//            String query = "SELECT * FROM employe where id =" + id;
-//
-//            ResultSet result = state.executeQuery(query);
-//
-//            while(result.next()){
-//                prod = new Produit(
-//                        result.getInt("id"),
-//                        result.getString("nom"),
-//                        result.getString("description"),
-//                        result.getString("image"),
-//                        result.getDouble("prix"),
-//                        result.getString("nom"),
-//                        result.getString("nbProduitAchete")
-//                );
-//            }
-//
-//            result.close();
-//            state.close();
-//        }
-//        catch (SQLException ex){
-//            System.out.println("Error SQL " + ex.getMessage());
-//        }
-//        finally {
-//            return prod;
-//        }
-        return prod;
+    public List<Produit> findByName(String produitName) {
+        List<Produit> lisEmp = new ArrayList<>();
+        // write your code here
+        try {
+
+            Statement state = connection.createStatement();
+            String query = "SELECT * FROM Produits where Produits.nom = \"" + produitName + "\"";
+
+            ResultSet result = state.executeQuery(query);
+
+            while(result.next()){
+                lisEmp.add(
+                        new Produit(
+                                result.getInt("id"),
+                                result.getString("nom"),
+                                result.getString("description"),
+                                result.getString("image"),
+                                result.getDouble("prix"),
+                                TypeRepas.values()[result.getInt("TypeRepas_id") - 1],
+                                FamilleProduits.values()[result.getInt("FamillesProduit_id") -1]
+                        )
+                );
+            }
+
+            result.close();
+            state.close();
+        }
+        catch (SQLException ex){
+            System.out.println("Error ded chargement du driver " + ex.getMessage());
+        }
+
+        return lisEmp;
     }
 
     @Override
     public List<Produit> findAll() {
-        // TODO
         List<Produit> lisEmp = new ArrayList<>();
+        // write your code here
+        try {
+
+            Statement state = connection.createStatement();
+            String query = "SELECT * FROM Produits";
+
+            ResultSet result = state.executeQuery(query);
+
+            while(result.next()){
+                lisEmp.add(
+                        new Produit(
+                                result.getInt("id"),
+                                result.getString("nom"),
+                                result.getString("description"),
+                                result.getString("image"),
+                                result.getDouble("prix"),
+                                TypeRepas.values()[result.getInt("TypeRepas_id") - 1],
+                                FamilleProduits.values()[result.getInt("FamillesProduit_id") -1]
+                        )
+                );
+            }
+
+            result.close();
+            state.close();
+        }
+        catch (SQLException ex){
+            System.out.println("Error ded chargement du driver " + ex.getMessage());
+        }
+
         return lisEmp;
     }
 }
