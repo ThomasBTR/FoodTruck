@@ -12,6 +12,7 @@ public class User {
     private String adresse;
     private String email;
     private String societe;
+    private String password;
 
 
 //////////// Constructeur ////////////
@@ -96,4 +97,11 @@ public class User {
 
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
