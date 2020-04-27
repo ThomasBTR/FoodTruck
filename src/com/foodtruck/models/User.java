@@ -5,10 +5,11 @@ import java.util.Date;
 
 public class User {
     private int id;
+    private static int instance;
     private String nom;
     private String prenom;
     private Genre genre;
-    private Date dateDeNaissance;
+    private String dateDeNaissance;
     private String adresse;
     private String email;
     private String societe;
@@ -16,7 +17,7 @@ public class User {
 
 
 //////////// Constructeur ////////////
-    public User(int id, String nom, String prenom, Date dateDeNaissance, String adresse, String email, String societe) {
+    public User(int id, String nom, String prenom, String dateDeNaissance, String adresse, String email, String societe, String password) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -24,6 +25,19 @@ public class User {
         this.adresse = adresse;
         this.email = email;
         this.societe = societe;
+        this.genre = Genre.HOMME;
+        this.password = password;
+    }
+
+    public User(String nom, String prenom, String dateDeNaissance, String adresse, String email, String societe, String password) {
+        this.id = ++instance;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateDeNaissance = dateDeNaissance;
+        this.adresse = adresse;
+        this.email = email;
+        this.societe = societe;
+        this.password = password;
     }
 
     ////// GETTER - SETTER ////////////////
@@ -69,11 +83,11 @@ public class User {
         this.prenom = prenom;
     }
 
-    public Date getDateDeNaissance() {
+    public String getDateDeNaissance() {
         return dateDeNaissance;
     }
 
-    public void setDateDeNaissance(Date dateDeNaissance) {
+    public void setDateDeNaissance(String dateDeNaissance) {
         this.dateDeNaissance = dateDeNaissance;
     }
 
