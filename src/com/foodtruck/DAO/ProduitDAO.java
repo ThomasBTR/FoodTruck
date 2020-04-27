@@ -39,9 +39,38 @@ public class ProduitDAO extends DAO<Produit> {
     @Override
     public Produit findById(int id) {
         // TODO
-        Produit emp = null;
-        return emp;
-    }
+            Produit produit = null;
+
+            try {
+
+                Statement state = connection.createStatement();
+                String query = "SELECT * FROM Produits where id =" + id;
+
+                ResultSet result = state.executeQuery(query);
+
+                while(result.next()){
+                    produit = new Produit(
+                            result.getInt("id"),
+                            result.getString("nom"),
+                            result.getString("description"),
+                            result.getString("image"),
+                            result.getDouble("prix"),
+                            TypeRepas.values()[result.getInt("TypeRepas_id") - 1],
+                            FamilleProduits.values()[result.getInt("FamillesProduit_id") -1]
+                    );
+
+                }
+
+                result.close();
+                state.close();
+            }
+            catch (SQLException ex){
+                System.out.println("Error SQL " + ex.getMessage());
+            }
+            finally {
+                return produit;
+            }
+        }
 
     public List<Produit> findByName(String produitName) {
         List<Produit> lisEmp = new ArrayList<>();
@@ -79,12 +108,12 @@ public class ProduitDAO extends DAO<Produit> {
 
     @Override
     public List<Produit> findAll() {
-        List<Produit> lisEmp = new ArrayList<>();
+        List<Produit> lisEmp = new ArrayList<Produit>();
         // write your code here
         try {
 
             Statement state = connection.createStatement();
-            String query = "SELECT * FROM Produits";
+            String query = "SELECT * FROM produits";
 
             ResultSet result = state.executeQuery(query);
 

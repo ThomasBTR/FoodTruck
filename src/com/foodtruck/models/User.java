@@ -1,6 +1,11 @@
 package com.foodtruck.models;
 
 
+import sun.java2d.pipe.SpanShapeRenderer;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
@@ -86,6 +91,27 @@ public class User {
     public String getDateDeNaissance() {
         return dateDeNaissance;
     }
+
+    public Date getDateDeNaissanceFrom1970(String dateDeNaissanceInString) {
+        SimpleDateFormat formater = new SimpleDateFormat();
+        Date date = new Date();
+        try{
+            date = (Date)formater.parse(dateDeNaissanceInString);
+
+
+        }
+        catch (ParseException e) {e.printStackTrace();}
+
+        return date;
+    }
+    public long getLongDate(Date date) {
+        SimpleDateFormat formater = new SimpleDateFormat();
+        long longDate;
+        longDate = date.getTime();
+
+        return longDate;
+    }
+
 
     public void setDateDeNaissance(String dateDeNaissance) {
         this.dateDeNaissance = dateDeNaissance;
