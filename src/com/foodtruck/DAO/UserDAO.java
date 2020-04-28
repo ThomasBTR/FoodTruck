@@ -18,12 +18,10 @@ public class UserDAO extends DAO<User>{
         User user = null;
         boolean response = false;
 
-        String receivedPassword = null;
-
         try {
 
             Statement state = connection.createStatement();
-            String query = "SELECT * FROM tpjavafoodtruck.utilisateur where id =" + id;
+            String query = "SELECT * FROM utilisateur where nom =" +id;
 
             ResultSet result = state.executeQuery(query);
 
@@ -33,14 +31,13 @@ public class UserDAO extends DAO<User>{
                         result.getString("nom"),
                         result.getString("prenom"),
                         result.getString("dateDeNaissance"),
-                        dateDeNaissance, result.getString("adresse"),
+                        result.getString("adresse"),
                         result.getString("email"),
                         result.getString("societe"),
                         result.getString("password")
                 );
 
             }
-            receivedPassword= user.getPassword();
 
             result.close();
             state.close();
@@ -49,7 +46,7 @@ public class UserDAO extends DAO<User>{
             System.out.println("Error SQL " + ex.getMessage());
         }
         finally {
-            if (receivedPassword.equals(password)){
+            if (user.getPassword() == password){
                 response = true;
             }
             return response;
@@ -68,14 +65,13 @@ public class UserDAO extends DAO<User>{
         boolean result = false;
         try {
             //String query = "delete from employe where id =" + obj.getId();
-            String query = "INSERT INTO tpjavafoodtruck.utilisateur (nom,prenom,datedDeNaissance,adresse,password,email, societe) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO utilisateur (nom,prenom,datedDeNaissance,adresse,password,email, societe) VALUES (?, ?, ?, ?, ?)";
 
             PreparedStatement prepare = connection.prepareStatement(query);
 
             prepare.setString(1, obj.getNom());
             prepare.setString(2, obj.getPrenom());
-           // prepare.setDate(3,  new java.sql.Date(obj.getLongDate(obj.getDateDeNaissanceFrom1970(obj.getDateDeNaissance()))));
-            //TODO Inscrire date de naissance dans un longDate au lieu d'un String (pas besoin de parser)
+            prepare.setDate(3,  new java.sql.Date(obj.getLongDate(obj.getDateDeNaissanceFrom1970(obj.getDateDeNaissance()))));
             prepare.setString(4, obj.getAdresse());
             prepare.setString(5, obj.getPassword());
             prepare.setString(6, obj.getEmail());
@@ -128,7 +124,7 @@ public class UserDAO extends DAO<User>{
                         result.getString("nom"),
                         result.getString("prenom"),
                         result.getString("dateDeNaissance"),
-                        dateDeNaissance, result.getString("adresse"),
+                        result.getString("adresse"),
                         result.getString("email"),
                         result.getString("societe"),
                         result.getString("password")

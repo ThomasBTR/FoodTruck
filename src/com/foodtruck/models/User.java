@@ -1,6 +1,9 @@
 package com.foodtruck.models;
 
 
+import sun.java2d.pipe.SpanShapeRenderer;
+
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,8 +14,7 @@ public class User {
     private String nom;
     private String prenom;
     private Genre genre;
-    private String dateDeNaissanceString;
-    private Date dateDeNaissance;
+    private String dateDeNaissance;
     private String adresse;
     private String email;
     private String societe;
@@ -20,11 +22,10 @@ public class User {
 
 
 //////////// Constructeur ////////////
-    public User(int id, String nom, String prenom, String dateDeNaissanceString, Date dateDeNaissance, String adresse, String email, String societe, String password) {
+    public User(int id, String nom, String prenom, String dateDeNaissance, String adresse, String email, String societe, String password) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        this.dateDeNaissanceString = dateDeNaissanceString;
         this.dateDeNaissance = dateDeNaissance;
         this.adresse = adresse;
         this.email = email;
@@ -33,12 +34,11 @@ public class User {
         this.password = password;
     }
 
-    public User(String nom, String prenom, String dateDeNaissanceString, Date dateDeNaissance, String adresse, String email, String societe, String password) {
-        this.dateDeNaissance = dateDeNaissance;
+    public User(String nom, String prenom, String dateDeNaissance, String adresse, String email, String societe, String password) {
         this.id = ++instance;
         this.nom = nom;
         this.prenom = prenom;
-        this.dateDeNaissanceString = dateDeNaissanceString;
+        this.dateDeNaissance = dateDeNaissance;
         this.adresse = adresse;
         this.email = email;
         this.societe = societe;
@@ -47,22 +47,6 @@ public class User {
 
     ////// GETTER - SETTER ////////////////
 
-
-    public static int getInstance() {
-        return instance;
-    }
-
-    public static void setInstance(int instance) {
-        User.instance = instance;
-    }
-
-    public Date getDateDeNaissance() {
-        return dateDeNaissance;
-    }
-
-    public void setDateDeNaissance(Date dateDeNaissance) {
-        this.dateDeNaissance = dateDeNaissance;
-    }
 
     public int getId() {
         return id;
@@ -104,8 +88,8 @@ public class User {
         this.prenom = prenom;
     }
 
-    public String getDateDeNaissanceString() {
-        return dateDeNaissanceString;
+    public String getDateDeNaissance() {
+        return dateDeNaissance;
     }
 
     public Date getDateDeNaissanceFrom1970(String dateDeNaissanceInString) {
@@ -129,8 +113,8 @@ public class User {
     }
 
 
-    public void setDateDeNaissanceString(String dateDeNaissanceString) {
-        this.dateDeNaissanceString = dateDeNaissanceString;
+    public void setDateDeNaissance(String dateDeNaissance) {
+        this.dateDeNaissance = dateDeNaissance;
     }
 
     public String getEmail() {
