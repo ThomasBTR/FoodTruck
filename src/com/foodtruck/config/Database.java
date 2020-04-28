@@ -9,8 +9,8 @@ public class Database {
     private String dbName = "tpjavafoodtruck";
     private int port = 3306;
     private String URL = "jdbc:mysql://" + host + ":" + port + "/" + dbName + "?useSSL=false";
-    private String username = "Vincent";
-    private String password = "mutton999";
+    private String username = "root";
+    private String password = "root";
     private static Connection connection;
 
     // Etape 1

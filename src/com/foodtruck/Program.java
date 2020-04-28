@@ -3,10 +3,8 @@ package com.foodtruck;
 import com.foodtruck.DAO.ProduitDAO;
 import com.foodtruck.DAO.UserDAO;
 import com.foodtruck.models.Genre;
-import com.foodtruck.models.Produit;
 import com.foodtruck.models.User;
 
-import javax.crypto.spec.PSource;
 import java.util.Scanner;
 
 public class Program {
@@ -35,18 +33,18 @@ public class Program {
                     String prenom = scanner.next();
                     System.out.println("Entrez votre genre (0~HOMME | 1~FEMME | 2~NON_GENRE) : ");
                     int genre = scanner.nextInt();
-                    System.out.println("Entrez votre date de naissance : ");
+                    System.out.println("Entrez votre date de naissance au format YYYY-MM-DD : ");
                     String dateDeNaissance = scanner.next();
                     System.out.println("Entrez votre adresse : ");
-                    String adresse = scanner.next();
+                    String adresse = scanner.nextLine();
                     System.out.println("Entrez votre email : ");
                     String email = scanner.next();
                     System.out.println("Entrez votre société : ");
-                    String societe = scanner.next();
+                    String societe = scanner.nextLine();
                     System.out.println("Entrez votre mot de passe : ");
                     String password = scanner.next();
 
-                    User newUser = new User(nom, prenom, dateDeNaissance, adresse, email, societe, password);
+                    User newUser = new User(nom, prenom, dateDeNaissance, dateDeNaissance, adresse, email, societe, password);
                     newUser.setGenre(Genre.values()[genre]);
                     userDAO.create(newUser);
                     System.out.println("Bienvenue " + prenom + " !");
