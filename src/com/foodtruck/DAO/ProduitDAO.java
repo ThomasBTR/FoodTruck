@@ -44,7 +44,7 @@ public class ProduitDAO extends DAO<Produit> {
             try {
 
                 Statement state = connection.createStatement();
-                String query = "SELECT * FROM Produits where id =" + id;
+                String query = "SELECT * FROM tpjavafoodtruck.Produits where id =" + id;
 
                 ResultSet result = state.executeQuery(query);
 

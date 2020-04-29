@@ -21,7 +21,7 @@ public class UserDAO extends DAO<User>{
         try {
 
             Statement state = connection.createStatement();
-            String query = "SELECT * FROM utilisateur where nom =" +id;
+            String query = "SELECT * FROM tpjavafoodtruck.utilisateur where id" +id;
 
             ResultSet result = state.executeQuery(query);
 
