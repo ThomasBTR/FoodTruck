@@ -65,7 +65,7 @@ public class UserDAO extends DAO<User>{
         boolean result = false;
         try {
             //String query = "delete from employe where id =" + obj.getId();
-            String query = "INSERT INTO utilisateur (nom,prenom,datedDeNaissance,adresse,password,email, societe) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO tpjavafoodtruck.utilisateur (nom,prenom,datedDeNaissance,adresse,password,email, societe) VALUES (?, ?, ?, ?, ?)";
 
             PreparedStatement prepare = connection.prepareStatement(query);
 
@@ -114,7 +114,7 @@ public class UserDAO extends DAO<User>{
         try {
 
             Statement state = connection.createStatement();
-            String query = "SELECT * FROM utilisateur where id =" + id;
+            String query = "SELECT * FROM tpjavafoodtruck.utilisateur where id =" + id;
 
             ResultSet result = state.executeQuery(query);
 

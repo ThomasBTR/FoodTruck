@@ -78,7 +78,7 @@ public class ProduitDAO extends DAO<Produit> {
         try {
 
             Statement state = connection.createStatement();
-            String query = "SELECT * FROM Produits where Produits.nom = \"" + produitName + "\"";
+            String query = "SELECT * FROM tpjavafoodtruck.Produits where Produits.nom = \"" + produitName + "\"";
 
             ResultSet result = state.executeQuery(query);
 
@@ -113,7 +113,7 @@ public class ProduitDAO extends DAO<Produit> {
         try {
 
             Statement state = connection.createStatement();
-            String query = "SELECT * FROM produits";
+            String query = "SELECT * FROM tpjavafoodtruck.Produits";
 
             ResultSet result = state.executeQuery(query);
 
